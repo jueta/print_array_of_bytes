@@ -24,17 +24,7 @@ void serialize(Data *data, unsigned char* value[]){
 
 }
 
-int main(){
-
-    Data data;
-    //Teste    <- Insira aqui os valores que querem testar.
-    data.id = 0x03;
-    data.sq = 0x05;
-    data.vl = 0xFFFF;
-
-    unsigned char* value[4];
-
-    serialize(&data, &value);
+void print(unsigned char* value[]){
 
     // size
     printf("%02x-",  value[0][0]); 
@@ -58,6 +48,22 @@ int main(){
     printf("%02x\n", value[3][3]);
 
     printf("Little Endian\n"); 
+
+}
+
+int main(){
+
+    Data data;
+    unsigned char* value[4];
+
+    //Teste    <- Insira aqui os valores que querem testar.
+    data.id = 0x03;
+    data.sq = 0x05;
+    data.vl = 0xFFFF;
+
+    serialize(&data, value);
+
+    print(value);
 
     return 0;
 
